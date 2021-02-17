@@ -1,0 +1,55 @@
+.container-fluid{
+    padding: 0;
+    height: 100%;
+}
+.header{
+    height: 70px;
+    background-color: #e1e4e8;
+    padding: 5px 20px;
+}
+.body{
+    height: calc(100% - 70px);
+    background-color: #fff;
+    padding: 20px;
+}
+// common
+tbody td{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.table-card{
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 35%);
+    min-height: 200px;
+    .title-label{font-size: 16px;}
+}
+.material-icons{
+    vertical-align: middle;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.dc{
+    color: red;
+}
+// pending task
+.pending-list, .inprogress-list{
+    .c1{width: 200px;}
+    .c2{width: calc(100% - 600px);}
+    .c3{width: 150px;}
+    .last-cell{width: 250px;}
+}
+.completed-list{
+    .c1{width: 200px;}
+    .c2{width: calc(100% - 600px);}
+    .c3{width: 150px;}
+    .c4{width: 250px;}
+}
+.pending-list .title-label{color: #bbb;}
+.inprogress-list .title-label{color: orange;}
+.completed-list .title-label{color: green;}
+.time-exceeded{background: #eabfbf;}

@@ -1,0 +1,122 @@
+<div class="container-fluid">
+    <div class="header text-right">
+        <button mat-fab color="accent" mat-button [matMenuTriggerFor]="menu">{{getShortName(userInfo)}}</button>
+        <mat-menu #menu="matMenu">
+            <div style="padding: 10px 15px;">
+                <h3>Welcome !</h3>
+                <p><strong>Email:</strong> {{userInfo}}</p>
+                <button mat-raised-button color="warn" (click)="logout()">Log Out</button>
+            </div>
+        </mat-menu>
+    </div>
+    <div class="body">
+        <div class="container">
+            <div class="row pending-list">
+                <div class="col-12">
+                    <div class="table-card">
+                        <h2>
+                            <strong class="title-label">Pending</strong>
+                            <button class="pull-right" mat-raised-button color="basic" (click)="createTask()">Create
+                                Task</button>
+                        </h2>
+                        <div class="table-responsive-sm">
+                            <div class="row" *ngIf="!pendingTask.length">
+                                <div class="col-12 text-center">No Task Found.</div>
+                            </div>
+                            <table class="table" *ngIf="pendingTask.length">
+                                <thead>
+                                    <th class="c1">Name</th>
+                                    <th class="c2">Description</th>
+                                    <th class="c3">Duration</th>
+                                    <th class="last-cell">&nbsp;</th>
+                                </thead>
+                                <tbody>
+                                    <tr [ngClass]="{'time-exceeded': checkTimeExceed(task)}" *ngFor="let task of pendingTask">
+                                        <td>{{task.name}}</td>
+                                        <td>{{task.description ? task.description : '--'}}</td>
+                                        <td>{{getDuration(task)}}</td>
+                                        <td>
+                                            <mat-slide-toggle class="cust-toggle" [color]="'accent'"
+                                                (change)="markInProgress($event.checked, task)">
+                                                Mark as Progress
+                                            </mat-slide-toggle>
+                                            <span class="material-icons dc" (click)="deleteTask(task.id)">delete</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /pending task-->
+            <div class="row inprogress-list">
+                <div class="col-12">
+                    <div class="table-card">
+                        <h2>
+                            <strong class="title-label">In Progress</strong>
+                        </h2>
+                        <div class="table-responsive-sm">
+                            <div class="row" *ngIf="!inprogressTask.length">
+                                <div class="col-12 text-center">No Task Found.</div>
+                            </div>
+                            <table class="table" *ngIf="inprogressTask.length">
+                                <thead>
+                                    <th class="c1">Name</th>
+                                    <th class="c2">Description</th>
+                                    <th class="c3">Time Left</th>
+                                    <th class="last-cell">&nbsp;</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let task of inprogressTask">
+                                        <td>{{task.name}}</td>
+                                        <td>{{task.description ? task.description : '--'}}</td>
+                                        <td>{{getDuration(task, 'progress')}}</td>
+                                        <td>
+                                            <mat-slide-toggle class="cust-toggle" [color]="'accent'"
+                                                (change)="markInProgress($event.checked, task)">
+                                                Mark as Complete
+                                            </mat-slide-toggle>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /inprogress task-->
+            <div class="row completed-list">
+                <div class="col-12">
+                    <div class="table-card">
+                        <h2>
+                            <strong class="title-label">Completed</strong>
+                        </h2>
+                        <div class="table-responsive-sm">
+                            <div class="row" *ngIf="!completedTask.length">
+                                <div class="col-12 text-center">No Task Found.</div>
+                            </div>
+                            <table class="table" *ngIf="completedTask.length">
+                                <thead>
+                                    <th class="c1">Name</th>
+                                    <th class="c2">Description</th>
+                                    <th class="c3">Duration</th>
+                                    <th class="c4">Time Taken</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let task of completedTask">
+                                        <td>{{task.name}}</td>
+                                        <td>{{task.description ? task.description : '--'}}</td>
+                                        <td>{{getDuration(task)}}</td>
+                                        <td>{{getTotalTime(task)}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /completed task-->
+        </div>
+    </div>
+</div>

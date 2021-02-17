@@ -1,0 +1,75 @@
+<div class="dialog-container">
+    <div class="header">
+        <strong>{{data.label}}</strong>
+    </div>
+    <form class="create-form" [formGroup]="taskForm" autocomplete="off">
+        <div class="body">
+            <div class="row">
+                <div class="col-12 mrb-10 mrt-10">
+                    <mat-form-field class="form-field">
+                        <mat-label>Task Name</mat-label>
+                        <input id="name" type="text" matInput name="name" formControlName="name" placeholder="Task"
+                            required>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 mrb-10">
+                    <mat-form-field class="form-field">
+                        <mat-label>Description</mat-label>
+                        <input id="description" type="text" matInput name="description" formControlName="description"
+                            placeholder="Description">
+                    </mat-form-field>
+                </div>
+                <div class="col-12 mrb-10">
+                    <div class="row">
+                        <div class="col-6 flex-center">
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label>Start Date</mat-label>
+                                <input matInput [matDatepicker]="startPicker" formControlName="startDate" [min]="today">
+                                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #startPicker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-6">
+                            <!-- <mat-label>Start Time</mat-label> -->
+                            <timepicker formControlName="startTime" [showMeridian]="false" [showSeconds]="true">
+                            </timepicker>
+                        </div>
+                    </div>
+                    <!-- <mat-form-field class="form-field" appearance="fill">
+                        <mat-label>Completion Time</mat-label>
+                        <mat-date-range-input
+                          [formGroup]="taskForm"
+                          [rangePicker]="dateRangeSelection" [min]="today">
+                          <input matStartDate placeholder="Start date" formControlName="startDate">
+                          <input matEndDate placeholder="End date" formControlName="endDate">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matSuffix [for]="dateRangeSelection"></mat-datepicker-toggle>
+                        <mat-date-range-picker #dateRangeSelection></mat-date-range-picker>
+                      </mat-form-field> -->
+                </div>
+                <div class="col-12 mrb-10">
+                    <div class="row">
+                        <div class="col-6 flex-center">
+                            <mat-form-field class="form-field" appearance="fill">
+                                <mat-label>End Date</mat-label>
+                                <input matInput [matDatepicker]="endPicker" formControlName="endDate" [min]="today">
+                                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #endPicker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-6">
+                            <!-- <mat-label>End Time</mat-label> -->
+                            <timepicker formControlName="endTime" [showMeridian]="false" [showSeconds]="true">
+                            </timepicker>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <button style="margin-left: 10px;" class="pull-right" mat-raised-button color="primary"
+                [mat-dialog-close]="taskForm" [disabled]="!taskForm.valid">Save</button>
+            <button class="pull-right" mat-raised-button color="basic" mat-dialog-close>Cancel</button>
+        </div>
+    </form>
+</div>

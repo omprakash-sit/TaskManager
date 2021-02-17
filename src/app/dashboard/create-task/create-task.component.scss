@@ -1,0 +1,14 @@
+.dialog-container{
+    height: 100%;
+    .header{
+        height: 40px;
+    }
+    form{
+        height: calc(100% - 40px);
+        .body{height: calc(100% - 40px);border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;padding: 20px;}
+        .footer{height: 40px;padding-top: 10px;}
+    }
+}
+.form-field{
+    width: 100%;
+}

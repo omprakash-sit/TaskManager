@@ -1,0 +1,30 @@
+<div class="card-container">
+    <div class="card">
+        <form class="loginform" (ngSubmit)="login()" autocomplete="on">
+            <div class="row">
+                <div class="col-12">
+                    <strong class="text-center" style="font-size: 24px;">Sign In</strong>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 mrb-10">
+                    <mat-form-field class="logon-form-field">
+                        <mat-label>Username</mat-label>
+                        <input id="username" type="text" matInput name="username" [(ngModel)]="email"
+                         placeholder="Username" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 mrb-10">
+                    <mat-form-field class="logon-form-field">
+                        <mat-label>Password</mat-label>
+                        <input id="password" type="password" matInput name="password" [(ngModel)]="password"
+                         placeholder="Password" required>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 text-right">
+                    <button type="submit" [disabled]="!checkValidForm()" mat-raised-button>Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
